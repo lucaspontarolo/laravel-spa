@@ -11,4 +11,11 @@
 ```sh
 make setup
 ```
+
 Acessar http://localhost
+
+### Utilitários
+Rodar os testes
+```sh
+docker-compose exec app php artisan test
+```
