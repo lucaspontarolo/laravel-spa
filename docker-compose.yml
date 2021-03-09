@@ -1,0 +1,33 @@
+version: '3'
+
+volumes:
+  database-data:
+    driver: local
+
+services:
+  app:
+    build: devops/docker/app/.
+    volumes:
+      - ./project:/app
+    ports:
+      - 80:8080
+    depends_on:
+      - database
+
+  database:
+    image: postgres:12.5
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=puzldb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=puzl
+
+  database-test:
+    image: postgres:12.5
+    environment:
+      - POSTGRES_DB=puzldb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=puzl

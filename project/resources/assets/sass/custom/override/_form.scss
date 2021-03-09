@@ -1,0 +1,11 @@
+textarea.form-control {
+    height: 64px !important;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+.is-invalid .select2.select2-hidden-accessible {
+    @extend .is-invalid;
+}
